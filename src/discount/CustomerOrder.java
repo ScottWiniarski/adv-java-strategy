@@ -1,6 +1,6 @@
 package discount;
 
-public class CustomerOrder {
+public class CustomerOrder{
 
     private String customerName;
     private double billAmount;
@@ -17,15 +17,18 @@ public class CustomerOrder {
         switch (discountType) {
             case 'S':
             case 's':
-                tempBill = billAmount - (billAmount * 0.1);
+                SmallDiscount smallDiscount = new SmallDiscount();
+                tempBill = smallDiscount.discountRate(billAmount);
                 break;
             case 'D':
             case 'd':
-                tempBill = billAmount - (billAmount * 0.5);
+                DefaultDiscount defaultDiscount = new DefaultDiscount();
+                tempBill = defaultDiscount.discountRate(billAmount);
                 break;
             case 'L':
             case 'l':
-                tempBill = billAmount - (billAmount * 0.75);
+                LargeDiscount largeDiscount = new LargeDiscount();
+                tempBill = largeDiscount.discountRate(billAmount);
                 break;
             default:
                 tempBill = billAmount;
